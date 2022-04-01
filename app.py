@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 #El config se usa para saber donde nos queremos conectar, este caso en nuestra base de datos que se llama 'contactsdb2', tiene como usuario 'root' y como contraseña 'carlo'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:carlo@localhost/contactsdb2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:carlo@localhost/contactsdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(app)
 
