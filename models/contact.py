@@ -1,4 +1,4 @@
-#Esta carpeta va a contener los datos que queremos de casa usuario
+#Esta carpeta va a contener los datos que queremos de cada usuario
 from utils.db import db
 
 
