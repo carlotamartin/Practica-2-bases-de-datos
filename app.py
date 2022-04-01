@@ -7,11 +7,18 @@ from routes.contacts import contacts
 #Ahora vamos a importar flask_sqlalchemy porque para concetar nuestra base de datos con la web necesitamos una app
 from flask_sqlalchemy import SQLAlchemy
 
+from config import DATABASE_CONNECTION_URI
 app = Flask(__name__)
 
-#El config se usa para saber donde nos queremos conectar, este caso en nuestra base de datos que se llama 'contactsdb2', tiene como usuario 'root' y como contraseña 'carlo'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:carlo@localhost/contactsdb'
+app.secret_key = 'mysecret'
+print(DATABASE_CONNECTION_URI)
+#El config se usa para saber donde nos queremos conectar, este caso en nuestra base de datos que se llama 'contactsdb', tiene como usuario 'root' y como contraseña 'carlo'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_CONNECTION_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# no cache
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 SQLAlchemy(app)
 
 #Para poder utilizar los blueprints, hay que registrarlos -> register
