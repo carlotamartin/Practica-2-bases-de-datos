@@ -6,4 +6,17 @@
     <input type='text' name='email' placeholder = 'Escribe tu email: ' />
     <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' />
     <button>Save</button>
-</form>  
+</form>
+
+<!-- creamos ahora una función para listar todos los contactos-->
+<div>
+    <!-- Ahora vamos a recorrer un buble for, recorriendo la lista contacts-->
+    {% for contact in contacts%}
+
+    <div>
+        <h5> {{contact.fullname}} </h5>
+        <p> {{contact.email}} </p>
+        <p> {{contact.phone}} </p>
+    </div>
+    {% endfor %}
+</div>
