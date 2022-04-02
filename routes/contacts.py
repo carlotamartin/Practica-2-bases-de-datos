@@ -42,8 +42,11 @@ def update_contact():
     return 'update a contact'
 
 #Crearemos esta ruta para cuando la aplicación elimine un contacto
-@contacts.route('/delete')
-def delete_contact():
+@contacts.route('/delete/<id>')
+def delete_contact(id):
+    contact = Contact.query.get(id)
+    db.session.delete(contact)
+    db.session.comit()
     return 'delete a contact'
 
 @contacts.route('/abaut')
