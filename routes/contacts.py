@@ -17,8 +17,8 @@ contacts = Blueprint ('contacts', __name__)
 @contacts.route('/')
 def home():
     #Query se utiliza para 'traer' todos los datos que están en la tabla
-    Contact.query.all()
-    return render_template('index.html')
+    contacts = Contact.query.all() #lista de todos los contactos
+    return render_template('index.html', contacts = contacts) #le mostramos la lista de todos los contactos para poder listarla
 
 @contacts.route('/new', methods= ['POST'])
 def add_contact():
