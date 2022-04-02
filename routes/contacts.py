@@ -2,7 +2,8 @@
 #Blueprint -> son los módulos con los que se construye la aplicación, su objetivo es la organización del códio
 #render_template -> es un módulo que sirva para distribuit un archivo html al navegador
 #request -> se utiliza para leer los datos introducidos en el formulario
-from flask import Blueprint, render_template, request
+#redirect-> te redirecciona a otras secciones
+from flask import Blueprint, render_template, request, redirect
 
 #Importamos el constructor de un contacto
 from models.contact import Contact
@@ -15,6 +16,8 @@ contacts = Blueprint ('contacts', __name__)
 #En las rutas, se pueden devolver tanto un string como un html
 @contacts.route('/')
 def home():
+    #Query se utiliza para 'traer' todos los datos que están en la tabla
+    Contact.query.all()
     return render_template('index.html')
 
 @contacts.route('/new', methods= ['POST'])
@@ -30,7 +33,8 @@ def add_contact():
     #Guardamos el contacto en la base de datos
     db.session.add(new_contact)
     db.session.commit()
-    return 'saving a contact'
+
+    return redirect('/')
 
 #Crearemos esta ruta para cuando la aplicación añada un contacto
 @contacts.route('/update')
