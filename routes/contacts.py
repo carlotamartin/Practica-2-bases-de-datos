@@ -3,7 +3,8 @@
 #render_template -> es un módulo que sirva para distribuit un archivo html al navegador
 #request -> se utiliza para leer los datos introducidos en el formulario
 #redirect-> te redirecciona a otras secciones
-from flask import Blueprint, render_template, request, redirect
+#url_for -> para redireccionar a alguna lado
+from flask import Blueprint, render_template, request, redirect, url_for
 
 #Importamos el constructor de un contacto
 from models.contact import Contact
@@ -15,7 +16,7 @@ contacts = Blueprint ('contacts', __name__)
 
 #En las rutas, se pueden devolver tanto un string como un html
 @contacts.route('/')
-def home():
+def index():
     #Query se utiliza para 'traer' todos los datos que están en la tabla
     contacts = Contact.query.all() #lista de todos los contactos
     return render_template('index.html', contacts = contacts) #le mostramos la lista de todos los contactos para poder listarla
@@ -46,8 +47,11 @@ def update_contact():
 def delete_contact(id):
     contact = Contact.query.get(id)
     db.session.delete(contact)
-    db.session.comit()
-    return 'delete a contact'
+    db.session.commit()
+
+    #Cuando eliminemos un contacto que se redirija a la página inicial
+    return redirect(url_for('contacts.index'))
+
 
 @contacts.route('/abaut')
 def abaut():
