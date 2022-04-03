@@ -3,11 +3,50 @@
 {%block body%}
 <h1></h1>
 
-<form action = '/update_contact/{{contact.id}}' method = 'POST'>
-    <input type='text' name='fullname' placeholder = 'Escribe tu nombre completo: ' value = '{{contact.fullname}}' />
-    <input type='text' name='email' placeholder = 'Escribe tu email: ' value = '{{contact.email}}' />
-    <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' value = '{{contact.phone}}'/>
-    <button>Save</button>
-</form>
 
+
+
+<form action = '/update_contact/{{contact.id}}' method = 'POST' class="card bg-black text-light">
+    <div class="card-body p-4">
+        <h1 class="h5 mb-4">Actualizar un contacto
+        </h1>
+
+        <div class="mb-3">
+            <label for="fullname">Escribe tu nombre y apellidos:</label>
+            <input
+                type="text"
+                name="fullname"
+                class="form-control rounded-0 bg-dark border-0 text-white"
+                placeholder="Nombre Apellido"
+                autofocus
+                value = '{{contact.fullname}}'
+            />
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Escribe tu email:</label>
+            <input
+                type="text"
+                name="email"
+                class="form-control rounded-0 bg-dark border-0 text-white"
+                placeholder="nombre@myuax.com"
+                required
+                value = '{{contact.email}}'
+            />
+        </div>
+
+        <div class="mb-3">
+            <label for="phone">Escribe tu número de teléfono:</label>
+            <input
+                type="text"
+                name="phone"
+                class="form-control rounded-0 bg-dark border-0 text-white"
+                placeholder="+34 123456789"
+                value = '{{contact.phone}}'
+            />
+        </div>
+
+        <button class="btn btn-primary">Guardar</button>
+    </div>
+</form>
 {% endblock%}
