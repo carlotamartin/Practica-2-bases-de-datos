@@ -67,7 +67,7 @@ def delete_contact(id):
     #Cuando eliminemos un contacto que se redirija a la página inicial
     return redirect(url_for('contacts.index'))
 
-
+#Estas dos rutas las he creado como ejemplo pero no contienen nada importante
 @contacts.route('/about')
 def about():
     return render_template('about.html')
