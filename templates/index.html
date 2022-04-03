@@ -2,15 +2,6 @@
 {%extends 'layout.html' %}
 
 {%block body%}
-<!--{% with messages = get_flased_messages() %}
-
-    {% if messages%}
-        {%for messages in messages%}
-            {{messages}}
-        {% endfor %}
-    {% endif %}
-
-{% endwith %} -->
 
 
 <!--h1, h2, ..., h6, se tratan de encabezado que van desde el más importante al que menos, respectivamente-->
@@ -18,31 +9,36 @@
 <!--form es un formulario-->
 
 
-<!--Esto es una variable para que muestre los mensajes que vienen desde flask-->
-<!--Para hacerlo, cada vez que el programa funcione, va a buscra si hay nuevos mensajes para recorrerlos y mostrarlos-->
+<!-- Vamos a organizar el código en distintas secciones -->
+<div class="row">
 
-<form action ='/new' method = 'POST'>
-    <input type='text' name='fullname' placeholder = 'Escribe tu nombre completo: ' />
-    <input type='text' name='email' placeholder = 'Escribe tu email: ' />
-    <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' />
-    <button>Save</button>
-</form>
-<!-- creamos ahora una función para listar todos los contactos-->
-<div>
-    <!-- Ahora vamos a recorrer un buble for, recorriendo la lista contacts-->
-    {% for contact in contacts%}
+    <div class="col-md-5 p-5">
 
-    <div>
-        <h5> {{contact.fullname}} </h5>
-        <div>
-            <!--Ahora vamos a crear unos botos para que eliminen y guarden un contacto-->
-            <a href = "{{url_for('contacts.update_contact', id = contact.id)}}">Update</a>
-            <a href = "{{url_for('contacts.delete_contact', id =contact.id)}}">Delete</a>
-        </div>
-        <p> {{contact.email}} </p>
-        <p> {{contact.phone}} </p>
+        {%include 'partials/_contactform.html'%}
     </div>
-    {% endfor %}
-</div>
+
+
+    <div class="col-md-7">
+
+        <!-- creamos ahora una función para listar todos los contactos-->
+        <div>
+            <!-- Ahora vamos a recorrer un buble for, recorriendo la lista contacts-->
+            {% for contact in contacts%}
+
+            <div>
+                <h5> {{contact.fullname}} </h5>
+                <div>
+                    <!--Ahora vamos a crear unos botos para que eliminen y guarden un contacto-->
+                    <a href = "{{url_for('contacts.update_contact', id = contact.id)}}">Update</a>
+                    <a href = "{{url_for('contacts.delete_contact', id =contact.id)}}">Delete</a>
+                </div>
+                <p> {{contact.email}} </p>
+                <p> {{contact.phone}} </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
 
 {%endblock %}
