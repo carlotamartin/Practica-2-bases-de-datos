@@ -1,4 +1,8 @@
-{% with messages = get_flased_messages() %}
+<!-- todo el código se hereda de layout.html-->
+{%extends 'layout.html' %}
+
+{%block body%}
+<!--{% with messages = get_flased_messages() %}
 
     {% if messages%}
         {%for messages in messages%}
@@ -6,7 +10,8 @@
         {% endfor %}
     {% endif %}
 
-{% endwith %}
+{% endwith %} -->
+
 
 <!--h1, h2, ..., h6, se tratan de encabezado que van desde el más importante al que menos, respectivamente-->
 <!--p se trata de un lenguaje donde mostrar texto en párrafos-->
@@ -39,3 +44,5 @@
     </div>
     {% endfor %}
 </div>
+
+{%endblock %}
