@@ -1,10 +1,3 @@
-<!--h1, h2, ..., h6, se tratan de encabezado que van desde el más importante al que menos, respectivamente-->
-<!--p se trata de un lenguaje donde mostrar texto en párrafos-->
-<!--form es un formulario-->
-
-
-<!--Esto es una variable para que muestre los mensajes que vienen desde flask-->
-<!--Para hacerlo, cada vez que el programa funcione, va a buscra si hay nuevos mensajes para recorrerlos y mostrarlos-->
 {% with messages = get_flased_messages() %}
 
     {% if messages%}
@@ -15,13 +8,20 @@
 
 {% endwith %}
 
+<!--h1, h2, ..., h6, se tratan de encabezado que van desde el más importante al que menos, respectivamente-->
+<!--p se trata de un lenguaje donde mostrar texto en párrafos-->
+<!--form es un formulario-->
+
+
+<!--Esto es una variable para que muestre los mensajes que vienen desde flask-->
+<!--Para hacerlo, cada vez que el programa funcione, va a buscra si hay nuevos mensajes para recorrerlos y mostrarlos-->
+
 <form action ='/new' method = 'POST'>
     <input type='text' name='fullname' placeholder = 'Escribe tu nombre completo: ' />
     <input type='text' name='email' placeholder = 'Escribe tu email: ' />
     <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' />
     <button>Save</button>
 </form>
-
 <!-- creamos ahora una función para listar todos los contactos-->
 <div>
     <!-- Ahora vamos a recorrer un buble for, recorriendo la lista contacts-->

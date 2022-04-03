@@ -36,7 +36,7 @@ def add_contact():
     db.session.add(new_contact)
     db.session.commit()
 
-    flash('Has añadido un nuevo contacto!')
+    flash('¡Has añadido un nuevo contacto!')
     return redirect(url_for('contacts.index'))
 
 #Crearemos esta ruta para cuando la aplicación añada un contacto
@@ -51,7 +51,7 @@ def update_contact(id):
 
         db.session.commit()
 
-        flash ('Se han modificado los datos del contacto!')
+        flash('¡Se han modificado los datos del contacto!')
 
         return redirect(url_for('contacts.index'))
     return render_template('update_contact.html', contact=contact)
@@ -63,6 +63,7 @@ def delete_contact(id):
     db.session.delete(contact)
     db.session.commit()
 
+    flash('¡Contacto eliminado!')
     #Cuando eliminemos un contacto que se redirija a la página inicial
     return redirect(url_for('contacts.index'))
 
