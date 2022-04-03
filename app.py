@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import DATABASE_CONNECTION_URI
 app = Flask(__name__)
 
-app.secret_key = 'mysecret'
+app.secret_key = 'secret key'
 print(DATABASE_CONNECTION_URI)
 #El config se usa para saber donde nos queremos conectar, este caso en nuestra base de datos que se llama 'contactsdb', tiene como usuario 'root' y como contraseña 'carlo'
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_CONNECTION_URI

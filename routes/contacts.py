@@ -4,7 +4,8 @@
 #request -> se utiliza para leer los datos introducidos en el formulario
 #redirect-> te redirecciona a otras secciones
 #url_for -> para redireccionar a alguna lado
-from flask import Blueprint, render_template, request, redirect, url_for
+#flask->
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 #Importamos el constructor de un contacto
 from models.contact import Contact
@@ -35,12 +36,12 @@ def add_contact():
     db.session.add(new_contact)
     db.session.commit()
 
-    return redirect('/')
+    flash('Has añadido un nuevo contacto!')
+    return redirect(url_for('contacts.index'))
 
 #Crearemos esta ruta para cuando la aplicación añada un contacto
-@contacts.route('/update/<string:id>', methods=['POST', 'GET'])
+@contacts.route('/update_contact/<id>', methods=['POST', 'GET'])
 def update_contact(id):
-    print(id)
     contact = Contact.query.get(id)
     #aqui lo que queremos es actualizar los datos en la base de datos
     if request.method == 'POST':
@@ -50,8 +51,9 @@ def update_contact(id):
 
         db.session.commit()
 
+        flash ('Se han modificado los datos del contacto!')
+
         return redirect(url_for('contacts.index'))
-    contact = Contact.query.get(id)
     return render_template('update_contact.html', contact=contact)
 
 #Crearemos esta ruta para cuando la aplicación elimine un contacto
