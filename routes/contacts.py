@@ -38,9 +38,21 @@ def add_contact():
     return redirect('/')
 
 #Crearemos esta ruta para cuando la aplicación añada un contacto
-@contacts.route('/update')
-def update_contact():
-    return 'update a contact'
+@contacts.route('/update/<string:id>', methods=['POST', 'GET'])
+def update_contact(id):
+    print(id)
+    contact = Contact.query.get(id)
+    #aqui lo que queremos es actualizar los datos en la base de datos
+    if request.method == 'POST':
+        contact.fullname = request.form['fullname']
+        contact.email = request.form['email']
+        contact.phone = request.form['phone']
+
+        db.session.commit()
+
+        return redirect(url_for('contacts.index'))
+    contact = Contact.query.get(id)
+    return render_template('update_contact.html', contact=contact)
 
 #Crearemos esta ruta para cuando la aplicación elimine un contacto
 @contacts.route('/delete/<id>')
