@@ -4,7 +4,7 @@
 #request -> se utiliza para leer los datos introducidos en el formulario
 #redirect-> te redirecciona a otras secciones
 #url_for -> para redireccionar a alguna lado
-#flask->
+#flask-> para alertas
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 #Importamos el constructor de un contacto
@@ -68,6 +68,11 @@ def delete_contact(id):
     return redirect(url_for('contacts.index'))
 
 
-@contacts.route('/abaut')
-def abaut():
-    return render_template('abaut.html')
+@contacts.route('/about')
+def about():
+    return render_template('about.html')
+
+@contacts.route('/info')
+def info():
+    return render_template('info.html')
+
