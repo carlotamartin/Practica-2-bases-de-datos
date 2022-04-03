@@ -1,7 +1,7 @@
 <h1></h1>
-<form action ='/update_contact' method = 'POST'>
-    <input type='text' name='fullname' placeholder = 'Escribe tu nombre completo: ' />
-    <input type='text' name='email' placeholder = 'Escribe tu email: ' />
-    <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' />
+<form action ='/update_contact/{{contact.id}}' method = 'POST'>
+    <input type='text' name='fullname' placeholder = 'Escribe tu nombre completo: ' value = '{{contact.fullname}}' />
+    <input type='text' name='email' placeholder = 'Escribe tu email: ' value = '{{contact.email}}' />
+    <input type='text' name='phone' placeholder = 'Escribe tu teléfono completo: ' value = '{{contact.phone}}'/>
     <button>Save</button>
 </form>

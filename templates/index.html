@@ -17,7 +17,7 @@
         <h5> {{contact.fullname}} </h5>
         <div>
             <!--Ahora vamos a crear unos botos para que eliminen y guarden un contacto-->
-            <a href = "{{url_for('contacts.update_contact')}}">Update</a>
+            <a href = "{{url_for('contacts.update_contact', id = contact.id)}}">Update</a>
             <a href = "{{url_for('contacts.delete_contact', id =contact.id)}}">Delete</a>
         </div>
         <p> {{contact.email}} </p>
