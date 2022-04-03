@@ -1,0 +1,12 @@
+<!--Esto es una variable para que muestre los mensajes que vienen desde flask-->
+<!--Para hacerlo, cada vez que el programa funcione, va a buscra si hay nuevos mensajes para recorrerlos y mostrarlos-->
+
+{% with messages = get_flashed_messages() %}
+
+    {% if messages%}
+        {%for message in messages%}
+            {{message}}
+        {% endfor %}
+    {% endif %}
+
+{% endwith %}
